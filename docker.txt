@@ -5,3 +5,133 @@ $docker run -v $(pwd)/python/images/hello.png:/tmp/img.png wakanapo/tesseract-oc
 Warning: Invalid resolution 0 dpi. Using 70 instead.
 Estimating resolution as 903
 He.tto”
+
+7-3
+
+$docker images 
+REPOSITORY                      TAG       IMAGE ID       CREATED         SIZE
+hello-world                     latest    f1f77a0f96b7   6 weeks ago     5.2kB
+sail-8.3/app                    latest    5b9f9a5c5dc5   12 months ago   1.05GB
+getmeili/meilisearch            latest    31fbc3072667   12 months ago   145MB
+axllent/mailpit                 latest    8b77c6c00e02   12 months ago   27.4MB
+seleniarm/standalone-chromium   latest    3ad710ce218c   13 months ago   1.55GB
+redis                           alpine    fec7877f3c24   14 months ago   41.6MB
+laravelsail/php83-composer      latest    242284805a41   14 months ago   622MB
+phpmyadmin/phpmyadmin           latest    933569f3a9f6   19 months ago   562MB
+mysql/mysql-server              8.0       423da140c8c0   2 years ago     507MB
+wakanapo/tesseract-ocr          latest    7a8759466f9e   2 years ago     157MB
+
+$ docker help 
+
+Usage:  docker [OPTIONS] COMMAND
+
+A self-sufficient runtime for containers
+
+Common Commands:
+  run         Create and run a new container from an image
+  exec        Execute a command in a running container
+  ps          List containers
+  build       Build an image from a Dockerfile
+  pull        Download an image from a registry
+  push        Upload an image to a registry
+  images      List images
+  login       Log in to a registry
+  logout      Log out from a registry
+  search      Search Docker Hub for images
+  version     Show the Docker version information
+  info        Display system-wide information
+
+Management Commands:
+  builder     Manage builds
+  buildx*     Docker Buildx (Docker Inc., v0.12.1-desktop.4)
+  compose*    Docker Compose (Docker Inc., v2.24.5-desktop.1)
+  container   Manage containers
+  context     Manage contexts
+  debug*      Get a shell into any image or container. (Docker Inc., 0.0.24)
+  dev*        Docker Dev Environments (Docker Inc., v0.1.0)
+  extension*  Manages Docker extensions (Docker Inc., v0.2.21)
+  feedback*   Provide feedback, right in your terminal! (Docker Inc., v1.0.4)
+  image       Manage images
+  init*       Creates Docker-related starter files for your project (Docker Inc., v1.0.0)
+  manifest    Manage Docker image manifests and manifest lists
+  network     Manage networks
+  plugin      Manage plugins
+  sbom*       View the packaged-based Software Bill Of Materials (SBOM) for an image (Anchore Inc., 0.6.0)
+  scout*      Docker Scout (Docker Inc., v1.4.1)
+  system      Manage Docker
+  trust       Manage trust on Docker images
+  volume      Manage volumes
+
+Swarm Commands:
+  swarm       Manage Swarm
+
+Commands:
+  attach      Attach local standard input, output, and error streams to a running container
+  commit      Create a new image from a container's changes
+  cp          Copy files/folders between a container and the local filesystem
+  create      Create a new container
+  diff        Inspect changes to files or directories on a container's filesystem
+  events      Get real time events from the server
+  export      Export a container's filesystem as a tar archive
+  history     Show the history of an image
+  import      Import the contents from a tarball to create a filesystem image
+  inspect     Return low-level information on Docker objects
+  kill        Kill one or more running containers
+  load        Load an image from a tar archive or STDIN
+  logs        Fetch the logs of a container
+  pause       Pause all processes within one or more containers
+  port        List port mappings or a specific mapping for the container
+  rename      Rename a container
+  restart     Restart one or more containers
+  rm          Remove one or more containers
+  rmi         Remove one or more images
+  save        Save one or more images to a tar archive (streamed to STDOUT by default)
+  start       Start one or more stopped containers
+  stats       Display a live stream of container(s) resource usage statistics
+  stop        Stop one or more running containers
+  tag         Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE
+  top         Display the running processes of a container
+  unpause     Unpause all processes within one or more containers
+  update      Update configuration of one or more containers
+  wait        Block until one or more containers stop, then print their exit codes
+
+Global Options:
+      --config string      Location of client config files (default "/Users/yamaguchimutsumi/.docker")
+  -c, --context string     Name of the context to use to connect to the daemon (overrides DOCKER_HOST env var and default context set with "docker
+                           context use")
+  -D, --debug              Enable debug mode
+  -H, --host list          Daemon socket to connect to
+  -l, --log-level string   Set the logging level ("debug", "info", "warn", "error", "fatal") (default "info")
+      --tls                Use TLS; implied by --tlsverify
+      --tlscacert string   Trust certs signed only by this CA (default "/Users/yamaguchimutsumi/.docker/ca.pem")
+      --tlscert string     Path to TLS certificate file (default "/Users/yamaguchimutsumi/.docker/cert.pem")
+      --tlskey string      Path to TLS key file (default "/Users/yamaguchimutsumi/.docker/key.pem")
+      --tlsverify          Use TLS and verify the remote
+  -v, --version            Print version information and quit
+
+Run 'docker COMMAND --help' for more information on a command.
+
+
+$docker pull alpine
+
+Using default tag: latest
+latest: Pulling from library/alpine
+6e771e15690e: Pull complete 
+Digest: sha256:a8560b36e8b8210634f77d9f7f9efd7ffa463e380b75e2e74aff4511df3ef88c
+Status: Downloaded newer image for alpine:latest
+docker.io/library/alpine:latest
+
+$docker images
+
+REPOSITORY                      TAG       IMAGE ID       CREATED         SIZE
+alpine                          latest    8d591b0b7dea   2 weeks ago     8.17MB
+hello-world                     latest    f1f77a0f96b7   6 weeks ago     5.2kB
+sail-8.3/app                    latest    5b9f9a5c5dc5   12 months ago   1.05GB
+getmeili/meilisearch            latest    31fbc3072667   12 months ago   145MB
+axllent/mailpit                 latest    8b77c6c00e02   12 months ago   27.4MB
+seleniarm/standalone-chromium   latest    3ad710ce218c   13 months ago   1.55GB
+redis                           alpine    fec7877f3c24   14 months ago   41.6MB
+laravelsail/php83-composer      latest    242284805a41   14 months ago   622MB
+phpmyadmin/phpmyadmin           latest    933569f3a9f6   19 months ago   562MB
+mysql/mysql-server              8.0       423da140c8c0   2 years ago     507MB
+wakanapo/tesseract-ocr          latest    7a8759466f9e   2 years ago     157MB
