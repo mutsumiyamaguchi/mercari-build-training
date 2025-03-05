@@ -201,4 +201,9 @@ $docker run mercari-build-training/app:latest
 
 Python 3.12.9
 
-                                                                 
+7-6
+$docker run -d -p 9000:9000 mercari-build-training/app:latest   
+意味
+-d ->コンテナをバックグラウンドで実行する                                                            
+-p 9000:9000 ->コンテナ内のポート 9000 をホスト（ローカルマシン）のポート 9000 にマッピング
+              ホストのポート 9000 にアクセスすると、コンテナ内のポート 9000 で動作しているサービスにアクセスできる
