@@ -17,7 +17,7 @@ RUN /app/venv/bin/pip install --no-cache-dir -r requirements.txt
 
 RUN addgroup -S mercari && adduser -S trainee -G mercari
 # sqlite3にもアクセス権限が必要と判断したため
-RUN chown -R trainee:mercari /app/db/mercari.swlite3
+RUN chown -R trainee:mercari /app/db/mercari.sqlite3
 
 USER trainee
 
