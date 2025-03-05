@@ -175,3 +175,30 @@ phpmyadmin/phpmyadmin           latest    933569f3a9f6   19 months ago    562MB
 mysql/mysql-server              8.0       423da140c8c0   2 years ago      507MB
 wakanapo/tesseract-ocr          latest    7a8759466f9e   2 years ago      157MB
 
+7-5
+$docker run mercari-build-training/app:latest 
+docker: Error response from daemon: failed to create task for container: failed to create shim task: OCI runtime create failed: runc create failed: unable to start container process: exec: "python": executable file not found in $PATH: unknown.
+ERRO[0002] error waiting for container: context canceled 
+
+変更後実行
+$docker build -t mercari-build-training/app:latest .
+
+[+] Building 7.2s (7/7) FINISHED                                                                                                         docker:desktop-linux
+ => [internal] load build definition from Dockerfile                                                                                                     0.0s
+ => => transferring dockerfile: 450B                                                                                                                     0.0s
+ => [internal] load metadata for docker.io/library/alpine:latest                                                                                         0.0s
+ => [internal] load .dockerignore                                                                                                                        0.0s
+ => => transferring context: 2B                                                                                                                          0.0s
+ => CACHED [1/3] FROM docker.io/library/alpine:latest                                                                                                    0.0s
+ => [2/3] RUN apk update && apk add --no-cache python3 py3-pip                                                                                           6.5s
+ => [3/3] RUN addgroup -S mercari && adduser -S trainee -G mercari                                                                                       0.3s 
+ => exporting to image                                                                                                                                   0.3s 
+ => => exporting layers                                                                                                                                  0.3s 
+ => => writing image sha256:27d75521e4b4b834e24f123db631d3bba955ad55027d8ad423889a2c245c086a                                                             0.0s 
+ => => naming to docker.io/mercari-build-training/app:latest        
+ 
+$docker run mercari-build-training/app:latest
+
+Python 3.12.9
+
+                                                                 
