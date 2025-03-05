@@ -1,0 +1,7 @@
+7-2
+実行結果を共有させていただきます。完璧に読み取れているわけではないけれど、惜しい結果でした。
+
+$docker run -v $(pwd)/python/images/hello.png:/tmp/img.png wakanapo/tesseract-ocr tesseract /tmp/img.png stdout -l eng
+Warning: Invalid resolution 0 dpi. Using 70 instead.
+Estimating resolution as 903
+He.tto”
