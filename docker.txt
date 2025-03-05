@@ -207,3 +207,44 @@ $docker run -d -p 9000:9000 mercari-build-training/app:latest
 -d ->コンテナをバックグラウンドで実行する                                                            
 -p 9000:9000 ->コンテナ内のポート 9000 をホスト（ローカルマシン）のポート 9000 にマッピング
               ホストのポート 9000 にアクセスすると、コンテナ内のポート 9000 で動作しているサービスにアクセスできる
+
+実際に実行したコマンド
+$docker build -t mercari-build-training/app:latest .
+[+] Building 15.9s (11/11) FINISHED                                                                                                      docker:desktop-linux
+ => [internal] load build definition from Dockerfile                                                                                                     0.0s
+ => => transferring dockerfile: 530B                                                                                                                     0.0s
+ => [internal] load metadata for docker.io/library/python:3.12-alpine                                                                                    1.6s
+ => [auth] library/python:pull token for registry-1.docker.io                                                                                            0.0s
+ => [internal] load .dockerignore                                                                                                                        0.0s
+ => => transferring context: 2B                                                                                                                          0.0s
+ => [1/5] FROM docker.io/library/python:3.12-alpine@sha256:28b8a72c4e0704dd2048b79830e692e94ac2d43d30c914d54def6abf74448a4e                              0.0s
+ => [internal] load build context                                                                                                                        0.2s
+ => => transferring context: 502.98kB                                                                                                                    0.2s
+ => CACHED [2/5] WORKDIR /app                                                                                                                            0.0s
+ => CACHED [3/5] RUN apk add --no-cache sqlite                                                                                                           0.0s
+ => [4/5] COPY . .                                                                                                                                       0.4s
+ => [5/5] RUN pip install --no-cache-dir -r requirements.txt                                                                                            13.4s
+ => exporting to image                                                                                                                                   0.4s 
+ => => exporting layers                                                                                                                                  0.4s 
+ => => writing image sha256:a90186c2e090ef050cd4a341114718a93abe1dcd3153f4cd63a5ee4244c48313                                                             0.0s 
+ => => naming to docker.io/mercari-build-training/app:latest                                                                                             0.0s 
+                                                                                                                                                              
+What's Next?                                                                                                                                                  
+  View a summary of image vulnerabilities and recommendations → docker scout quickview
+
+
+$docker run -p 9000:9000 mercari-build-training/app 
+
+INFO:     Started server process [1]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:9000 (Press CTRL+C to quit)
+
+実行結果
+$curl \
+  -X POST \
+  --url 'http://localhost:9000/items' \
+  -F 'name=jacket' \
+  -F 'category=fashion' \
+  -F 'image=@images/default.jpg'
+{"message":"item received: ('jacket', 'fashion', 'default.jpg')"}%  
