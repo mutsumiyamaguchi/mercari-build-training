@@ -135,3 +135,43 @@ laravelsail/php83-composer      latest    242284805a41   14 months ago   622MB
 phpmyadmin/phpmyadmin           latest    933569f3a9f6   19 months ago   562MB
 mysql/mysql-server              8.0       423da140c8c0   2 years ago     507MB
 wakanapo/tesseract-ocr          latest    7a8759466f9e   2 years ago     157MB
+
+7-4
+dockerのビルド方法確認（タグの指定のみ抽出）
+$docker build --help
+
+-t, --tag stringArray               Name and optionally a tag (format: "name:tag")
+      --target string                 Set the target build stage to build
+      --ulimit ulimit                 Ulimit options (default [])
+
+$docker build -t mercari-build-training/app:latest .
+
+[+] Building 0.2s (6/6) FINISHED                                                                                                         docker:desktop-linux
+ => [internal] load build definition from Dockerfile                                                                                                     0.0s
+ => => transferring dockerfile: 188B                                                                                                                     0.0s
+ => [internal] load metadata for docker.io/library/alpine:latest                                                                                         0.0s
+ => [internal] load .dockerignore                                                                                                                        0.0s
+ => => transferring context: 2B                                                                                                                          0.0s
+ => [1/2] FROM docker.io/library/alpine:latest                                                                                                           0.0s
+ => [2/2] RUN addgroup -S mercari && adduser -S trainee -G mercari                                                                                       0.1s
+ => exporting to image                                                                                                                                   0.0s
+ => => exporting layers                                                                                                                                  0.0s
+ => => writing image sha256:c7868441c1b6d8624b3dfae447445fb6cb8f96c37530bba3995989087ed20971                                                             0.0s
+ => => naming to docker.io/mercari-build-training/app:latest                                                                                             0.0s
+
+
+$docker images
+REPOSITORY                      TAG       IMAGE ID       CREATED          SIZE
+mercari-build-training/app      latest    c7868441c1b6   35 seconds ago   8.18MB
+alpine                          latest    8d591b0b7dea   2 weeks ago      8.17MB
+hello-world                     latest    f1f77a0f96b7   6 weeks ago      5.2kB
+sail-8.3/app                    latest    5b9f9a5c5dc5   12 months ago    1.05GB
+getmeili/meilisearch            latest    31fbc3072667   12 months ago    145MB
+axllent/mailpit                 latest    8b77c6c00e02   12 months ago    27.4MB
+seleniarm/standalone-chromium   latest    3ad710ce218c   13 months ago    1.55GB
+redis                           alpine    fec7877f3c24   14 months ago    41.6MB
+laravelsail/php83-composer      latest    242284805a41   14 months ago    622MB
+phpmyadmin/phpmyadmin           latest    933569f3a9f6   19 months ago    562MB
+mysql/mysql-server              8.0       423da140c8c0   2 years ago      507MB
+wakanapo/tesseract-ocr          latest    7a8759466f9e   2 years ago      157MB
+
