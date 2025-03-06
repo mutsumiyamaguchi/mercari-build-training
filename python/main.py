@@ -34,18 +34,12 @@ def setup_database():
     
     print("set up db!!")
     # connect database
-    db_gen = get_db()  # get_db()を呼び出してジェネレータを取得
-    conn = next(db_gen)  # ジェネレータを消費してデータベース接続を取得
-    
-    cursor = conn.cursor()
-
+    with sqlite3.connect(db) as cursor:
     # open sql schema　file
-    with open('db/items.sql', 'r') as f:
-        sql_script = f.read()
-        cursor.executescript(sql_script)
+        with open('db/items.sql', 'r') as f:
+            sql_script = f.read()
+            cursor.executescript(sql_script)
     
-    conn.commit()
-    db_gen.close()
 
 
 @asynccontextmanager
