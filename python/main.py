@@ -31,7 +31,7 @@ def get_db():
 
 # STEP 5-1: set up the database connection
 def setup_database():
-    
+
     print("set up db!!")
     # connect database
     with sqlite3.connect(db) as cursor:
