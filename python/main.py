@@ -101,6 +101,7 @@ def get_item():
 
 # add image_name
 class GetItemimage(BaseModel):
+    id:int
     name: str
     category: str
     image_name: str
@@ -394,9 +395,9 @@ def get_items(db: sqlite3.Connection = Depends(get_db)):
     lst = []
     for i in items:
         if len(i) == 4:
-            ele = GetItemimage(name=i[1],category = category[int(i[2])-1][1],image_name= i[3])
+            ele = GetItemimage(id = i[0],name=i[1],category = category[int(i[2])-1][1],image_name= i[3])
         else:
-            ele = GetItemimage(name=i[1],category = category[int(i[2])-1][1],image_name= "Nan")
+            ele = GetItemimage(id = i[0],name=i[1],category = category[int(i[2])-1][1],image_name= "Nan")
         lst.append(ele)
 
     resjson = GetimageItemResponse(items = lst)

@@ -29,23 +29,56 @@ export const ItemList = ({ reload, onLoadCompleted }: Prop) => {
   }, [reload, onLoadCompleted]);
 
   return (
-    <div>
+    <div className = "ItemList">
       {items.map((item) => {
+        // console.log(item)
         const name = item.image_name
         const url = 'http://localhost:9000/image/'+name
+        console.log(item.id)
         return (
-          <div key={item.id} className="ItemList">
-            <img src = {url} onError={(e) => (e.currentTarget.src = PLACEHOLDER_IMAGE)}/>
-            {/* TODO: Task 2: Show item images */}
+          <div key={item.id} className="Item">
+              <img src = {url} onError={(e) => (e.currentTarget.src = PLACEHOLDER_IMAGE)}/>
             {/* <img src={PLACEHOLDER_IMAGE} /> */}
-            <p>
-              <span>Name: {item.name}</span>
-              <br />
-              <span>Category: {item.category}</span>
-            </p>
+            <span>Name: {item.name}</span>
+            <br />
+            <span>Category: {item.category}</span>
           </div>
         );
       })}
     </div>
   );
+
+  // return (
+  //   <div id = "table">
+  //     <table>
+  //       <thead>
+  //         <tr>
+  //           <th>Image</th>
+  //           <th>Name</th>
+  //           <th>Category</th>
+  //         </tr>
+  //       </thead>
+  //       <tbody>
+  //         {items.map((item) => {
+  //           const name = item.image_name;
+  //           const url = 'http://localhost:9000/image/' + name;
+  //           return (
+  //             <tr key={item.id}>
+  //               <td>
+  //                 <img
+  //                   src={url}
+  //                   alt={item.name}
+  //                   onError={(e) => (e.currentTarget.src = PLACEHOLDER_IMAGE)}
+  //                   style={{ width: '100px', height: '100px' }}
+  //                 />
+  //               </td>
+  //               <td>{item.name}</td>
+  //               <td>{item.category}</td>
+  //             </tr>
+  //           );
+  //         })}
+  //       </tbody>
+  //     </table>
+  //   </div>
+  // );
 };

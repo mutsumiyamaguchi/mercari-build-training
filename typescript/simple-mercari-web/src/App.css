@@ -1,21 +1,25 @@
 .App {
   text-align: center;
+  width: 100vw; 
+  height: 100vh;
 }
 
 .Title {
-  background-color: #222427;
+  background-color: white;
   min-height: 8vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: left;
   font-size: calc(10px + 1vmin);
-  color: white;
+  color: black;
 }
 
 .Listing {
-  background-color: #222427;
+  background-color:rgb(188, 122, 172);
+  /* max-width:50vw; */
   min-height: 8vh;
+  padding:1% 10% 1% 10%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -23,20 +27,81 @@
   font-size: calc(10px + 1vmin);
   color: white;
 }
+
+/* .ItemList {
+  background-color:white;
+  min-height: 8vh;
+  display: grid;
+  flex-direction: column;
+  align-items: center;
+  justify-content: left;
+  font-size: calc(10px + 1vmin);
+  color: red;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+} */
+
 
 .ItemList {
-  background-color: #222427;
-  min-height: 8vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: left;
-  font-size: calc(10px + 1vmin);
-  color: white;
+  display: grid;  /* Gridレイアウトを使用 */
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* 横に並び、スペースに応じて折り返し */
+  gap: 20px; /* アイテム間のスペース */
+  justify-items: center; 
+  padding: 20px; /* アイテムリスト内の余白 */
 }
 
+
+.ItemList span {
+  display: block;
+  font-size: 14px;
+}
+
+
+.Item{
+  display: flex;
+  flex-direction: column;      /* 画像とテキストを縦に並べる */
+  align-items: center;         /* 中央揃え */
+  background-color: white;     /* 背景色 */
+  padding: 10px;               /* 内部パディング */
+  border: 1px solid #ccc;      /* 枠線を追加 */
+  width:200px
+}
+.Item img {
+  max-width: 100%;  
+  height: auto;     
+  object-fit: contain; 
+ } 
+
+
+
+/* table {
+  width: 100%;
+  border-collapse: collapse; 
+  margin: 0 auto;          
+  justify-content: center;    
+  align-items: center;         
+}
+th, td {
+  padding: 10px;          
+  border: 1px solid black; 
+  color: black;
+}
+
+tr{
+  border-color: black; 
+  border: 1px solid black;
+  padding: 10px;               
+  text-align: center;          
+}*/
+
+/* img {
+  max-width: 100%;  
+  height: auto;     
+  object-fit: contain; 
+ }  */
+
+
 .App-link {
-  color: #61dafb;
+  color: black;
 }
 
 @keyframes App-logo-spin {
