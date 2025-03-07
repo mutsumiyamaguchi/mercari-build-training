@@ -407,24 +407,23 @@ def get_items(db: sqlite3.Connection = Depends(get_db)):
 @app.post("/items",response_model = AddItemResponse)
 async def add_item(name: str = Form(...), category: str = Form(...), image: UploadFile = File(...),db: sqlite3.Connection = Depends(get_db)):
 
-    # print("kakuninn!!!",image)
-    file_name = image.filename
     # Create image path
-    image_path = images / file_name
-
+    image_path = images / image.filename
 
     if not image.filename.endswith(".jpg"):
         raise HTTPException(status_code=400, detail="Image path does not end with .jpg")
 
-    if not image_path.exists():
-        logger.info(f"Image not found: {image}")
-        image = images / "default.jpg"
-
     # hashlibの引数はバイナリを読み込むので一度データを読み込む必要がある
-    file_hash = hashlib.sha256()
     contents = await image.read()  # ファイルの内容を読み込む
+    file_hash = hashlib.sha256()
     file_hash.update(contents)
+
     file_hash_name= file_hash.hexdigest()+".jpg"
+    image_path = images / file_hash_name
+    
+    # Save image
+    with open(image_path, "wb") as img_file:
+        img_file.write(contents)
 
     # connect database
     cursor = db.cursor()
@@ -446,8 +445,7 @@ async def add_item(name: str = Form(...), category: str = Form(...), image: Uplo
     # saved change data
     db.commit()
     
-    return AddItemResponse(**{"message": f"item received: {name,category,file_name}"})
-
+    return AddItemResponse(**{"message": f"item received: {name,category,file_hash_name}"})
 
 
     

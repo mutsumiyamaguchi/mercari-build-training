@@ -31,10 +31,13 @@ export const ItemList = ({ reload, onLoadCompleted }: Prop) => {
   return (
     <div>
       {items.map((item) => {
+        const name = item.image_name
+        const url = 'http://localhost:9000/image/'+name
         return (
           <div key={item.id} className="ItemList">
+            <img src = {url} onError={(e) => (e.currentTarget.src = PLACEHOLDER_IMAGE)}/>
             {/* TODO: Task 2: Show item images */}
-            <img src={PLACEHOLDER_IMAGE} />
+            {/* <img src={PLACEHOLDER_IMAGE} /> */}
             <p>
               <span>Name: {item.name}</span>
               <br />
