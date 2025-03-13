@@ -39,9 +39,10 @@ export const ItemList = ({ reload, onLoadCompleted }: Prop) => {
           <div key={item.id} className="Item">
               <img src = {url} onError={(e) => (e.currentTarget.src = PLACEHOLDER_IMAGE)}/>
             {/* <img src={PLACEHOLDER_IMAGE} /> */}
-            <span>Name: {item.name}</span>
-            <br />
-            <span>Category: {item.category}</span>
+            <br/>
+            <p className="itemname">Name: {item.name}</p>
+            {/* <br /> */}
+            <p className="itemcategory">Category: {item.category}</p>
           </div>
         );
       })}

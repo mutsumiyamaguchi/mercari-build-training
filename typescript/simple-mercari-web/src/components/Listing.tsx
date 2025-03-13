@@ -20,13 +20,25 @@ export const Listing = ({ onListingCompleted }: Prop) => {
   const [values, setValues] = useState<FormDataType>(initialState);
 
   const uploadImageRef = useRef<HTMLInputElement>(null);
+  const categories = ['Electronic', 'fashion', 'Books', 'Furniture', 'Toys','Food','Other'];
 
-  const onValueChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+
+  // const onValueChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //   setValues({
+  //     ...values,
+  //     [event.target.name]: event.target.value,
+  //   });
+  // };
+
+  const onValueChange = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     setValues({
       ...values,
       [event.target.name]: event.target.value,
     });
   };
+  
   const onFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValues({
       ...values,
@@ -53,9 +65,6 @@ export const Listing = ({ onListingCompleted }: Prop) => {
       category: values.category,
       image: values.image,
     })
-      .then(() => {
-        alert('Item listed successfully');
-      })
       .catch((error) => {
         console.error('POST error:', error);
         alert('Failed to list this item');
@@ -70,8 +79,8 @@ export const Listing = ({ onListingCompleted }: Prop) => {
   };
   return (
     <div className="Listing">
-      <form onSubmit={onSubmit}>
-        <div>
+      <form className="listing-form" onSubmit={onSubmit}>
+        {/* <div> */}
           <input
             type="text"
             name="name"
@@ -81,14 +90,22 @@ export const Listing = ({ onListingCompleted }: Prop) => {
             required
             value={values.name}
           />
-          <input
+          {/* <input
             type="text"
             name="category"
             id="category"
             placeholder="category"
             onChange={onValueChange}
             value={values.category}
-          />
+          /> */}
+          <select name="category" id="category" onChange={onValueChange} value={values.category} required>
+            <option value="" disabled>Select a category</option>
+              {categories.map((category) => (
+            <option key={category} value={category}>
+              {category}
+            </option>
+              ))}
+          </select>
           <input
             type="file"
             name="image"
@@ -98,7 +115,7 @@ export const Listing = ({ onListingCompleted }: Prop) => {
             ref={uploadImageRef}
           />
           <button type="submit">List this item</button>
-        </div>
+        {/* </div> */}
       </form>
     </div>
   );
