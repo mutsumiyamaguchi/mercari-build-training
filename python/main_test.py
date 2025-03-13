@@ -16,6 +16,7 @@ def override_get_db():
     finally:
         conn.close()
 
+# app.dependency_overrides[get_db] = override_get_db
 
 @pytest.fixture(autouse=True)
 def db_connection():
@@ -40,13 +41,6 @@ def db_connection():
     conn.row_factory = sqlite3.Row  # Return rows as dictionaries
 
     yield conn
-
-    conn.close()
-    # After the test is done, remove the test database
-    if test_db.exists():
-        test_db.unlink() # Remove the file
-
-app.dependency_overrides[get_db] = override_get_db
 
 client = TestClient(app)
 
