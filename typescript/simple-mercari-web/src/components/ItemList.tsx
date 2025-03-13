@@ -33,7 +33,7 @@ export const ItemList = ({ reload, onLoadCompleted }: Prop) => {
       {items.map((item) => {
         // console.log(item)
         const name = item.image_name
-        const url = import.meta.env.VITE_BACKEND_URL ||'http://localhost:9000/image/'+name
+        const url = (import.meta.env.VITE_BACKEND_URL ||'http://localhost:9000')+'/image/'+name
         console.log(item.id)
         return (
           <div key={item.id} className="Item">
