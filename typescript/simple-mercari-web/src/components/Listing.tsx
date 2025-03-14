@@ -20,7 +20,7 @@ export const Listing = ({ onListingCompleted }: Prop) => {
   const [values, setValues] = useState<FormDataType>(initialState);
 
   const uploadImageRef = useRef<HTMLInputElement>(null);
-  const categories = ['Electronic', 'fashion', 'Books', 'Furniture', 'Toys','Food','Other'];
+  const categories = ['Electronic', 'Fashion', 'Books', 'Furniture', 'Toys','Food','Other'];
 
 
   // const onValueChange = (event: React.ChangeEvent<HTMLInputElement>) => {

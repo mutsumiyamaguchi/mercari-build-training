@@ -67,6 +67,15 @@
   background: #fca62d;
 }
 
+.listing-form button:focus {
+  outline: 2px solid #ffc935; /* 黄色の枠 */
+}
+
+.listing-form button:active {
+  background-color: #ffbb00; /* クリック時の色 */
+  outline: 2px solid #ffbb00;
+}
+
 /* .ItemList {
   background-color:white;
   min-height: 8vh;
@@ -130,6 +139,35 @@
   font-size: 14px;
   text-align: center; /* テキスト中央揃え */
   bottom: 10px;
+}
+
+.sort-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;  /* プルダウンとボタンの間に10pxの余白を追加 */
+}
+
+#sort-button {
+  background-color: #fff7a2; /* 緑色 */
+  color: black; /* 文字色 */
+  padding: 6px 12px;  /* 小さめのパディング */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;  /* 文字サイズを少し小さく */
+  transition: background 0.3s;
+}
+
+#sort-button:hover {
+  background-color: #ffc935; /* ホバー時の色 */
+}
+#sort-button:focus {
+  outline: 2px solid #ffc935; /* 黄色の枠 */
+}
+
+#sort-button:active {
+  background-color: #ffbb00; /* クリック時の色 */
+  outline: 2px solid #ffbb00;
 }
 
 
