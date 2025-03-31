@@ -16,7 +16,7 @@
 }
 
 .Listing {
-  background-color:rgb(188, 122, 172);
+  background-color:#754b15;
   /* max-width:50vw; */
   min-height: 8vh;
   padding:1% 10% 1% 10%;
@@ -26,6 +26,54 @@
   justify-content: left;
   font-size: calc(10px + 1vmin);
   color: white;
+}
+
+.listing-form {
+  background: hsl(339, 86%, 84%);        
+  padding: 20px;             
+  border-radius: 8px;       
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+  display: flex;
+  flex-direction: column;
+  gap: 10px;                
+  width: 50vw;             
+}
+
+#category {
+  color: gray; 
+}
+
+#category:valid {
+  color: black; 
+}
+
+
+
+.listing-form button {
+  background: #faf1aa ;
+  color: black;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 25vw;
+  align-self: center;
+}
+
+
+
+.listing-form button:hover {
+  background: #fca62d;
+}
+
+.listing-form button:focus {
+  outline: 2px solid #ffc935; /* 黄色の枠 */
+}
+
+.listing-form button:active {
+  background-color: #ffbb00; /* クリック時の色 */
+  outline: 2px solid #ffbb00;
 }
 
 /* .ItemList {
@@ -63,13 +111,64 @@
   background-color: white;     /* 背景色 */
   padding: 10px;               /* 内部パディング */
   border: 1px solid #ccc;      /* 枠線を追加 */
-  width:200px
+  width:200px;
+  position: relative;
 }
 .Item img {
   max-width: 100%;  
   height: auto;     
-  object-fit: contain; 
+  object-fit: contain;
+  flex-grow: 1;  
  } 
+
+.Item .description {
+  display: flex;
+  flex-direction: column; /* nameとcategoryを縦に並べる */
+  position: absolute; /* 絶対位置で配置 */
+  bottom: 10px; /* 下から10pxの位置に配置 */
+  left: 50%; /* 中央揃え */
+  transform: translateX(-50%); /* 左に50%ずらして中央に配置 */
+  background-color: rgba(255, 255, 255, 0.7); /* 背景を半透明にする（必要に応じて変更） */
+  padding: 5px;
+  text-align: center;
+}
+
+.Item .itemname,
+.Item .itemcategory {
+  margin: 5px 0; /* 段落間の余白 */
+  font-size: 14px;
+  text-align: center; /* テキスト中央揃え */
+  bottom: 10px;
+}
+
+.sort-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;  /* プルダウンとボタンの間に10pxの余白を追加 */
+}
+
+#sort-button {
+  background-color: #fff7a2; /* 緑色 */
+  color: black; /* 文字色 */
+  padding: 6px 12px;  /* 小さめのパディング */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;  /* 文字サイズを少し小さく */
+  transition: background 0.3s;
+}
+
+#sort-button:hover {
+  background-color: #ffc935; /* ホバー時の色 */
+}
+#sort-button:focus {
+  outline: 2px solid #ffc935; /* 黄色の枠 */
+}
+
+#sort-button:active {
+  background-color: #ffbb00; /* クリック時の色 */
+  outline: 2px solid #ffbb00;
+}
 
 
 
